@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="task-user">
+	<div class="container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>Hello, <span>{{ request.user }}</span></h1>
+					<p>You have {{ count }} undone task{{ count|pluralize:"s" }}</p>
+					<div class="button-class">
+						{% if user.is_authenticated %}
+						<button class="btn user-btn d-block" type="submit">
+							<a href="{% url 'logout' %}">Logout</a>	
+							&nbsp;
+							<a href="{% url 'create_task' %}">Add Task</a>
+						</button>
+						{% else %}
+						<button class="btn user-btn d-block" type="submit">
+							<a href="{% url 'login' %}">Login</a>
+							<a href="{% url 'register' %}">Register</a>	
+							<a href="{% url 'create_task' %}">Add Task</a>
+						</button>
+						{% endif %}						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="task-items">
+	<div class="container-fluid">
+		<div class="container">
+			{% for task in tasks.all %}
+			<div class="row">
+				<div class="col-md-8">
+					<h3>{{ task.title }}</h3>
+					<p><span style="color: black;">{{ task.summary }}</span></p>
+					<p>completed:<span style="font-style: italic; color: #129CF3">{{ task.complete }}</span></p>
+					<p>created at <span style="font-style: italic; color: #129CF3">{{ task.created_pretty }}</span></p> 
+				</div>
+				<div class="col-md-4">
+					<button type="submit" class="btn item-btn">
+						<a href="{% url 'task_detail' task.pk %}">Task Details</a>
+					</button>
+					<button type="submit" class="btn item-btn">
+						<a href="{% url 'update_task' task.pk %}">Update Task</a>
+					</button>
+					<button type="submit" class="btn item-btn">
+						<a href="{% url 'delete_task' task.pk %}">Delete Task</a>
+					</button>
+				</div>
+				<br>
+				<br>
+				<hr>
+			</div>
+			{% empty %}
+				<h3>{{ request.user }}, you do not have any tasks yet</h3>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+{% endblock %} 

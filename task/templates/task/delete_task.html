@@ -1,0 +1,6 @@
+{% load crispy_forms_tags %}
+<form method="POST">
+	{% csrf_token %}
+	<p>are u sure u want to delete {{ task.title }}</p>
+	<input type="submit" value="delete">
+</form>
