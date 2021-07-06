@@ -15,6 +15,7 @@ class RegisterForm(UserCreationForm):
 		fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2']
 
 
+#  task creation form
 class TaskCreationForm(forms.ModelForm):
 	class Meta():
 		model = Task
