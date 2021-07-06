@@ -1,6 +1,33 @@
+{% extends 'update_delete.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
-<form method="POST">
-	{% csrf_token %}
-	<p>are u sure u want to delete {{ task.title }}</p>
-	<input type="submit" value="delete">
-</form>
+{% block content %}
+
+<section class="task-items">
+	<div class="container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 update">
+					<h2>Task delete form</h2>
+					<form method="POST">
+						{% csrf_token %}
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info completed">
+								<button type="submit" class="btn item-btn">
+									<a href="{% url 'home' %}">Go back</a>
+								</button>
+							</li>
+							<li class="list-group-item list-group-item-danger completed">
+								<h2>Are you absolutely sure you want to delete "{{ task.title }}" ?</h2>
+								<p class="completed-p">once deleted, task cannot be recovered</p>
+							</li>
+							<input type="submit" value="delete" class="btns">
+						</ul>
+					</form>
+				</div>
+			</div>
+		</div>	
+	</div>
+</section>
+
+{% endblock %}

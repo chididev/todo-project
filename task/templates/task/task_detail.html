@@ -1,1 +1,25 @@
-<h1>hello</h1>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="task-items">
+	<div class="container-fluid">
+		<div class="container">
+			<ul class="list-group">
+			  <li class="list-group-item list-group-item-warning title">{{ tasks.title }}</li>
+			  <li class="list-group-item list-group-item-primary description">{{ tasks.description }}</li>
+			  <li class="list-group-item list-group-item-secondary completed">
+			  	completed:<span style="font-style: italic; color: #129CF3">{{ tasks.complete }}</span>
+			  </li>
+			  <li class="list-group-item list-group-item-success created">
+			  	created at <span style="font-style: italic; color: #129CF3">{{ tasks.created_pretty }}</span>
+			  </li>
+			   <li class="list-group-item list-group-item-danger buttons">
+					<button type="submit" class="btn item-btn">
+						<a href="{% url 'home' %}">Go back</a>
+					</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
+{% endblock %}

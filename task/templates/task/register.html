@@ -1,6 +1,27 @@
+{% extends 'register_base.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
-<form method="POST">
-	{% csrf_token %}
-	{{ form|crispy }}
-	<input type="submit" value="register">
-</form>
+{% block content %}
+
+<section class="task-items">
+	<div class="container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 update">
+					<h2>registration form</h2>
+					<form method="POST">
+						{% csrf_token %}
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-danger completed">
+								{{ form|crispy }}
+							</li>
+							<input type="submit" value="register" class="btns">
+						</ul>
+					</form>
+				</div>
+			</div>
+		</div>	
+	</div>
+</section>
+
+{% endblock %}

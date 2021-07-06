@@ -138,6 +138,61 @@
 		.task-items .buttons a:hover{
 			color: black;
 		}
+		.task-items .update h2{
+			text-align: center;
+			color: grey;
+			text-transform: capitalize;
+			font-size: 30px;
+			line-height: 40px;
+			font-family: 'Mukta', sans-serif; 
+		}
+		.task-items .update .btns,
+		.task-items .update .btns:active,
+		.task-items .update .btns:focus,
+		.task-items .update .btns:visited{
+			font-size: 20px;
+			line-height: 30px;
+			color: black;
+			background: darkgrey;
+			text-transform: capitalize;
+			border: none;
+			text-decoration: none;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			transition: all 1s;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			-o-transition: all 1s;
+		}
+		.task-items .update .btns:hover{
+			color: white;
+			background-color: black;
+		}
+		.completed .item-btn a,
+		.completed .item-btn a:active,
+		.completed .item-btn a:focus,
+		.completed .item-btn a:visited{
+			text-transform: capitalize;
+			text-decoration: none;
+			text-align: left;
+			color: black;
+			font-size: 20px;
+			line-height: 30px;
+			transition: all 1s;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			-o-transition: all 1s;
+		}
+		.completed .item-btn a:hover{
+			color: #129CF3;
+		}
+		li .completed-p{
+			color: grey;
+			text-align: center;
+			font-size: 18px;
+			line-height: 28px;
+			text-transform: none;
+		}
 		/* FOOTER STYLING */
 		.footer{
 			font-size: 15px;
@@ -160,11 +215,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h1>Hello, <span>{{ request.user }}</span></h1>
-					{% if count == 0 %}
-						<p>You have zero undone task</p>
-					{% else %}
-						<p>You have {{ count }} undone task{{ count|pluralize:"s" }}</p>
-					{% endif %}
+					<br>
 					<div class="button-class">
 						{% if user.is_authenticated %}
 						<button class="btn user-btn text-center" type="submit">
@@ -173,10 +224,8 @@
 							<a href="{% url 'create_task' %}">Add Task</a>
 						</button>
 						{% else %}
-						<button class="btn user-btn text-center" type="submit">
-							<a href="{% url 'login' %}">Login</a>
+						<button class="btn user-btn text-center" type="submit">		
 							<a href="{% url 'register' %}">Register</a>	
-							<a href="{% url 'create_task' %}">Add Task</a>
 						</button>
 						{% endif %}						
 					</div>

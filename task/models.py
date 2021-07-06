@@ -20,4 +20,4 @@ class Task(models.Model):
 		return self.created.strftime('%I:%M %p, %A %B %Y')
 
 	def summary(self):
-		return self.description[:50]
+		return self.description[:100]
