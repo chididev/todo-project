@@ -28,7 +28,9 @@
 			</ul>
 			  <hr>			 
 			{% empty %}
-				<h3>{{ request.user }}, you do not have any tasks yet</h3>
+				<h1>{{ request.user }}, you do not have any tasks yet.</h1>
+				<p>Please create task by clicking at the add task button above</p>
+				<hr>
 			{% endfor %}
 		</div>
 	</div>
