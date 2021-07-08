@@ -43,7 +43,7 @@ class TaskListView(LoginRequiredMixin, ListView):
 
 
 # handles the task object detail
-class TaskDetailView(DetailView):
+class TaskDetailView(LoginRequiredMixin, DetailView):
 	model = Task
 	context_object_name = 'tasks'
 	template_name = 'task/task_detail.html'
